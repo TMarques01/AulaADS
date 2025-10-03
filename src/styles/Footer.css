@@ -1,0 +1,118 @@
+.footer {
+  /* Fixed footer that is always visible at the bottom of the viewport */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50; /* above most content and below any modals */
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* use the variable set by the component; fallback to a light gray */
+  --footer-color: var(--footer-color, #ebebeb);
+  color: var(--footer-color);
+
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+
+.footer-menu {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 8px;
+}
+
+.instagram,
+.linkedin,
+.mail,
+.cv {
+  color: var(--footer-color);
+  font-family: Satoshi;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 115.162%; /* 2.30325rem */
+  text-decoration: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+
+  transition: font-weight 0.2s ease;
+
+  flex: 1 1;
+
+}
+
+.instagram,
+.linkedin,
+.mail,
+.cv {
+  min-width: 6rem;
+  padding: 0.5rem 1rem;
+}
+
+.instagram { text-align: left; }
+.linkedin, .mail { text-align: center; }
+.cv { text-align: right; }
+
+.instagram:hover,
+.linkedin:hover,
+.mail:hover,
+.cv:hover {
+  font-weight: 700;
+}
+
+/* Existing styles remain unchanged */
+
+/* Media query for screens smaller than 720px */
+@media (max-width: 720px) {
+  .footer-menu {
+    flex-direction: row; /* Stack links vertically */
+    gap: 4px; /* Reduce spacing between links */
+    align-items: flex-start; /* Align links to the start */
+    justify-content: center;
+  }
+
+  .instagram,
+  .linkedin,
+  .mail,
+  .cv {
+    font-size: 1.2rem; /* Reduce font size for smaller screens */
+    text-align: center; /* Center all links */
+    padding: 0.3rem 0.5rem; /* Reduce padding */
+  }
+}
+
+/* Media query for screens smaller than 420px */
+@media (max-width: 420px) {
+  .footer-menu {
+    gap: 2px; /* Further reduce spacing */
+    align-items: left;
+  }
+
+  .instagram,
+  .linkedin,
+  .mail,
+  .cv {
+    font-size: 1rem; /* Further reduce font size */
+    padding: 0.2rem 0.4rem; /* Adjust padding for very small screens */
+  }
+}
+

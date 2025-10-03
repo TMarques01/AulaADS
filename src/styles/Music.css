@@ -1,0 +1,117 @@
+/* Make the Music page visually similar to Home but scoped to .music-page */
+.music-page {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  width: 100%;
+  height: 100vh;
+  background-image: url("../assets/music.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* reserve space at top and bottom for fixed navbar/footer */
+  padding-top: var(--nav-height, 64px);
+  padding-bottom: var(--footer-height, 64px);
+  box-sizing: border-box;
+
+  background-color: rgba(0, 0, 0, 0.19);
+  background-blend-mode: overlay;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+
+  z-index: 0; /* behind navbar (which will use a higher z-index) */
+
+  overflow: hidden;
+}
+
+.music-page::after {
+  /* content is required when using :after */
+  content: "";
+  /* A textura granular */
+  background-image: url("../assets/cardboard-texture.jpg");
+  /* Especificar altura e largura para movimento */
+  height: 300%;
+  width: 300%;
+  /* Ajustar opacidade para menos embaciado */
+  opacity: 0.2; /* Reduzir opacidade da textura */
+  /* Fixar posição para manter o movimento */
+  position: fixed;
+  z-index: -1;
+
+  animation: grain-movement 8s steps(10) infinite;
+}
+
+.music-title {
+  display: flex;
+  width: auto;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-bottom: 1rem;
+
+  color: #ebebeb;
+  text-align: center;
+  font-family: Satoshi;
+  font-size: 7rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 7.5625rem; /* 78.065% */
+}
+
+.music-artist {
+  display: flex;
+  width: auto;
+  /* height: 5rem; */
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0;
+
+  color: #ebebeb;
+  text-align: center;
+  font-family: Satoshi;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 400;
+  /* line-height: 7.5625rem; 189.063% */
+
+  cursor: pointer;
+
+  transition: font-weight 0.2s ease;
+}
+
+.music-artist:hover {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .music-title {
+    font-size: clamp(5rem, 7vw, 6rem);
+    /* font-size: 6rem; */
+    margin: 0; /* Reduced gap between title and artist */
+  }
+  .music-artist {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin: 1rem;
+    height: 1.5rem;
+  }
+  .music-page {
+    background-position: center 30%; /* Shift image for better framing on small screens */
+  }
+}
+
+/* Media query for screens smaller than 420px */
+@media (max-width: 420px) {
+  .music-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 0.3rem; /* Further reduced gap for very small screens */
+  }
+  .music-artist {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+  }
+}
