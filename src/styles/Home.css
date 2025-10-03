@@ -1,0 +1,156 @@
+.hero {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  width: 100%;
+  height: 100vh;
+  background-image: url("../assets/home.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* optional overlay for readability */
+  background-color: rgba(0, 0, 0, 0.15);
+  background-blend-mode: overlay;
+
+  /* reserve space at top and bottom for fixed navbar/footer */
+  padding-top: var(--nav-height, 64px);
+  padding-bottom: var(--footer-height, 64px);
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+
+  z-index: 0; /* behind navbar (which will use a higher z-index) */
+
+  overflow: hidden;
+}
+
+.hero::after {
+  /* content is required when using :after */
+  content: "";
+  /* The grainy image */
+  background-image: url("../assets/cardboard-texture.jpg");
+  /* Specify a height and width above and beyond the page header for movement */
+  height: 300%;
+  width: 300%;
+  /* We're using opacity in place of a transparent image */
+  opacity: 0.2;
+  /* We'll need this when the animation kicks in to hold the position of the texture */
+  position: fixed;
+
+  z-index: -1;
+  animation: grain-movement 8s steps(10) infinite;
+}
+
+/* Grain movement animation */
+@keyframes grain-movement {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  20% {
+    transform: translate(-15%, 5%);
+  }
+  30% {
+    transform: translate(7%, -25%);
+  }
+  40% {
+    transform: translate(-5%, 25%);
+  }
+  50% {
+    transform: translate(-15%, 10%);
+  }
+  60% {
+    transform: translate(15%, 0%);
+  }
+  70% {
+    transform: translate(0%, 15%);
+  }
+  80% {
+    transform: translate(3%, 35%);
+  }
+  90% {
+    transform: translate(-10%, 10%);
+  }
+}
+
+.name {
+  display: flex;
+  width: auto;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0;
+
+  color: #ebebeb;
+  text-align: center;
+  font-family: Satoshi, system-ui, -apple-system;
+  font-size: clamp(2.6rem, 8vw, 7.5rem);
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.03;
+  letter-spacing: clamp(0.2rem, 3.5vw, 1.9rem);
+}
+
+.intro-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 0;
+}
+
+.title-strong {
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.title-normal {
+  font-weight: 300;
+}
+
+.title {
+  font-size: clamp(1rem, 4vw, 3rem);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.2rem;
+  display: inline-flex; /* keep on single row */
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  color: #1b1616;
+  text-align: center;
+  font-family: Satoshi, system-ui, -apple-system;
+}
+
+@media (max-width: 720px) {
+  .name {
+    font-size: clamp(3rem, 9vw, 6rem);
+    letter-spacing: 0.35rem;
+    padding: 0 1rem;
+  }
+  .title {
+    font-size: clamp(0.95rem, 4.5vw, 1.4rem);
+    gap: 0.35rem;
+  }
+  .hero {
+    background-position: center 30%; /* shift image for better framing on small screens */
+  }
+}
+
+@media (max-width: 420px) {
+  .name {
+    font-size: 2.2rem;
+    letter-spacing: 0.15rem;
+  }
+  .title {
+    font-size: 0.95rem;
+    gap: 0.25rem;
+  }
+}
