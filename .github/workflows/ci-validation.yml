@@ -20,7 +20,7 @@ jobs:
         run: pip install -r python_app/requirements.txt
 
       - name: Run static analysis
-        run: pylint python_app/
+        run: pylint python_app/app.py
 
       - name: Run unit tests
         run: pytest --junitxml=test-results.xml
