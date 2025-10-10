@@ -5,10 +5,10 @@ FROM python:3.14-slim
 WORKDIR /app
 
 # Copy dependency list first (to leverage Docker cache)
-COPY requirements.txt .
+COPY python_app/requirements.txt .
 
 # Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r python_app/requirements.txt
 
 # Copy the rest of your project
 COPY . .

@@ -17,10 +17,10 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r python_app/requirements.txt
 
       - name: Run static analysis
-        run: pylint src/
+        run: pylint python_app/
 
       - name: Run unit tests
         run: pytest --junitxml=test-results.xml
