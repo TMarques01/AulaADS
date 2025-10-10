@@ -2,7 +2,7 @@ name: CI with Continuous Validation
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   test:
@@ -14,7 +14,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -27,4 +27,3 @@ jobs:
 
       - name: Run security scan
         uses: github/codeql-action/analyze@v3
-
