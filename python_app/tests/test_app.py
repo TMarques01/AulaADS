@@ -1,6 +1,6 @@
 import pytest
 
-from AulaADS.app import reverse_text
+from app import reverse_text
 
 
 def test_reverse_text_basic():
