@@ -1,4 +1,5 @@
 """Small application module with a function to reverse strings and a CLI."""
+import sys
 from typing import List
 
 
@@ -14,8 +15,6 @@ def main(argv: List[str] | None = None) -> int:
 
     Returns 0 on success, 2 on usage error.
     """
-    import sys
-
     if argv is None:
         argv = sys.argv[1:]
 

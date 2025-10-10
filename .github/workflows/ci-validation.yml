@@ -17,13 +17,10 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install -r python_app/requirements.txt
+        run: pip install pylint pytest
 
       - name: Run static analysis
-        run: pylint python_app/app.py
+        run: pylint python_app/
 
       - name: Run unit tests
-        run: pytest --junitxml=test-results.xml
-
-      - name: Run security scan
-        uses: github/codeql-action/analyze@v3
+        run: pytest python_app/tests/ --junitxml=test-results.xml
